@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "mongodb": "^4.4.1",
+    "mongodb-connection-string-url": "^2.5.2",
+    "mongoose": "^6.2.5"
+  }
+}
