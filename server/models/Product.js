@@ -1,25 +1,45 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
-const thoughtSchema = new Schema(
+const productSchema = new Schema(
   {
-    thoughtText: {
+    name: {
       type: String,
-      required: 'You need to leave a thought!',
-      minlength: 1,
-      maxlength: 280
+      required: true,
+      trim: true
+    },
+    description: {
+      type: String
     },
     createdAt: {
       type: Date,
       default: Date.now,
       get: timestamp => dateFormat(timestamp)
     },
-    username: {
-      type: String,
+    image: {
+      type: String
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0.99
+    },
+    quantity: {
+      type: Number,
+      min: 1,
+      default: 1
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category',
       required: true
     },
-    reactions: [reactionSchema]
+    comment: {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+
   },
   {
     toJSON: {
@@ -28,10 +48,10 @@ const thoughtSchema = new Schema(
   }
 );
 
-thoughtSchema.virtual('reactionCount').get(function() {
-  return this.reactions.length;
+productSchema.virtual('commentCount').get(function() {
+  return this.comment.length;
 });
 
-const Thought = model('Thought', thoughtSchema);
+const Product = model('Product', productSchema);
 
-module.exports = Thought;
+module.exports = Product;
