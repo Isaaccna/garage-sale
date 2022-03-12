@@ -9,6 +9,7 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
+    //user' profile picture?
     email: {
       type: String,
       required: true,
@@ -20,24 +21,15 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    thoughts: [
+    products: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
+        ref: 'Product'
       }
     ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ]
+   
   },
-  {
-    toJSON: {
-      virtuals: true
-    }
-  }
+
 );
 
 // set up pre-save middleware to create password
@@ -55,9 +47,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
-});
 
 const User = model('User', userSchema);
 
