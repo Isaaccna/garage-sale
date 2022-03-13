@@ -32,6 +32,13 @@ const typeDefs = gql`
     commentBody: String
     createdAt: String
     username: String
+    reactions: [Reaction]
+  }
+  type Reaction{
+   _id: ID
+   reactionBody: String
+   createdAt: String
+   username: String
   }
   type Auth {
     token: ID!
@@ -47,7 +54,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addProduct(name: String!, description: String!, image: String!, price: Int!, quantity: Int!, category: String!): Product
-    addComment(ProductId: ID!, commentBody: String!): Product
+    addComment(productId: ID!, commentBody: String!): Product
+    addReaction(commentId: ID!, reactionBody: String!): Product
   }
 `;
 
