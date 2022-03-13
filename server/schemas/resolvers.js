@@ -5,7 +5,7 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('product')
+        .populate('products')
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
