@@ -25,11 +25,13 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
+          <span role="img" aria-label="box">📦</span>
             <Link to="/signup">
-              Signup
+            Signup
             </Link>
           </li>
           <li className="mx-1">
+          <span role="img" aria-label="box">📦</span>
             <Link to="/login">
               Login
             </Link>
@@ -43,8 +45,8 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="box">📦</span>
-        Garage Sale
+          <img src="./images/garage-sale-logo.png" width="120" height="65" />
+          {/* <h1>GARAGE<span>SALE</span></h1>  */}
         </Link>
       </h1>
 
