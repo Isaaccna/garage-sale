@@ -1,60 +1,86 @@
 import { gql } from '@apollo/client';
 
+// query_me for a profile page?
 export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
-      description
-      price
-      quantity
-      image
-      category {
+Query products($username: String) {
+    products(username: $$username){
         _id
-      }
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
         name
-      }
+        description
+        image
+        price
+        quantity
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+            reactions {
+                _id
+                reactionBody
+                createdAt
+                username
+            }
+        }
     }
-  }
+}
 `;
 
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
+export const QUERY_PRODUCT = gql`
+query product($id: ID!) {
+    product(_id: $id) {
+        _id
+        name
+        description
+        image
+        price
+        quantity
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+            reactions {
+                _id
+                reactionBody
+                createdAt
+                username
+            }
+        }
     }
-  }
+}
 `;
 
 export const QUERY_USER = gql`
-  {
-    user {
-      firstName
-      lastName
-      orders {
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      products {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
+        name
+        description
+        image
+        price
+        quantity
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+            reactions {
+                _id
+                reactionBody
+                createdAt
+                username
+            }
         }
       }
     }
