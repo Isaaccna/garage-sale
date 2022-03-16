@@ -49,13 +49,13 @@ const resolvers = {
     addProduct: async (parent, args, context) => {
         if (context.user) {
           const product = await Product.create({ ...args, username: context.user.username });
-  
+
           await User.findByIdAndUpdate(
             { _id: context.user._id },
             { $push: { products: product._id } },
             { new: true }
           );
-  
+
           return Product;
         }
         throw new AuthenticationError('You need to be logged in!');
@@ -75,7 +75,7 @@ addComment: async (parent, { productId, commentBody }, context) => {
     throw new AuthenticationError('You need to be logged in!');
   },
     },
-    
+
 }
 
 module.exports = resolvers;

@@ -24,7 +24,7 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 29.99,
-      quantity: 1, 
+      quantity: 1,
       username: "ElijahHolt"
     },
     {
@@ -146,7 +146,7 @@ db.once('open', async () => {
     username: "PamelaWashignton",
     email: 'pamela@testmail.com',
     password: 'password12345',
-   
+
   });
 
   await User.create({

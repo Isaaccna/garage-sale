@@ -27,7 +27,7 @@ const userSchema = new Schema(
         ref: 'Product'
       }
     ],
-   
+
   },
 
 );
