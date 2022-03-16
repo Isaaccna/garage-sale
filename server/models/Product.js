@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
+// require model for type: [Category]
 
 const productSchema = new Schema(
   {
@@ -36,9 +37,11 @@ const productSchema = new Schema(
       default: 1
     },
     category: {
-      type: Schema.Types.ObjectId,
+      // type: Schema.Types.ObjectId,
+      type: [Category],
       ref: 'Category',
-      required: true
+      required: true,
+      default: undefined
     },
     comment: {
       type: Schema.Types.ObjectId,
