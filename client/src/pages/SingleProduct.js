@@ -32,4 +32,4 @@ const SingleProduct = (props) => {
   );
 
 };
-export default ProductList;
+export default SingleProduct;

@@ -1,62 +1,98 @@
 import { gql } from '@apollo/client';
-
+// query_me for a profile page?
 export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
-      description
-      price
-      quantity
-      image
-      category {
+query products($username: String) {
+    products(username: $username){
         _id
-      }
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
         name
-      }
+        description
+        image
+        price
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+        }
     }
-  }
+}
 `;
-
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
-  }
-`;
-
-export const QUERY_USER = gql`
-  {
-    user {
-      firstName
-      lastName
-      orders {
+export const QUERY_PRODUCT = gql`
+query product($id: ID!) {
+    product(_id: $id) {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
+        name
+        description
+        image
+        price
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+        }
+    }
+}
+`;
+ 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      products {
+        _id
+        name
+        description
+        image
+        price
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
         }
       }
+    }
+  }
+`;
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      products {
+        _id
+        name
+        description
+        image
+        price
+        username
+        commentCount
+        comments {
+            _id
+            commentBody
+            createdAt
+            username
+        }
+      }
+  }
+  }
+`;
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
     }
   }
 `;

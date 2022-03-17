@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
+const CommentSchema = require('./Comment');
 
 const productSchema = new Schema(
   {
@@ -30,20 +30,8 @@ const productSchema = new Schema(
       required: true,
       min: 0.99
     },
-    quantity: {
-      type: Number,
-      min: 1,
-      default: 1
-    },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true
-    },
-    comment: {
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }
+   
+    comments : [CommentSchema]
 
   },
   {

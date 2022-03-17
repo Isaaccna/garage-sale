@@ -7,59 +7,42 @@ const typeDefs = gql`
     username: String
     email: String
     products: [Product]
-
-  }
-
-  type Category {
-    _id: ID
-    name: String
   }
   type Product {
     _id: ID
     name: String
     description: String
+    image: String
     price: Float
-    quantity: Int
     createdAt: String
     username: String
     commentCount: Int
-    comments: [Comment]
-    category: Int
+    comments: [Comment] 
   }
-
   type Comment {
     _id: ID
     commentBody: String
     createdAt: String
     username: String
-    reactions: [Reaction]
-  }
-  type Reaction{
-   _id: ID
-   reactionBody: String
-   createdAt: String
-   username: String
   }
   type Auth {
     token: ID!
     user: User
   }
   type Query {
-    categories: [Category]
+    me: User
     users: [User]
     user(username: String!): User
-    products(category: ID, name: String): [Product]
+    products( username: String): [Product]
     product(_id: ID!): Product
   }
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(username: String!, name: String!, description: String!, image: String!, price: Int!, quantity: Int!, category: String!): Product
+    addProduct(username: String!, name: String!, description: String!, image: String! price: Int!, ): Product
     addComment(productId: ID!, commentBody: String!): Product
-    addReaction(commentId: ID!, reactionBody: String!): Product
+    
   }
 `;
-
-
-// export the typeDefs
 module.exports = typeDefs;
+
