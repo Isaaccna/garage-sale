@@ -36,7 +36,8 @@ const productSchema = new Schema(
       default: 1
     },
     category: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.Array,
+      default: undefined,
       ref: 'Category',
       required: true
     },
