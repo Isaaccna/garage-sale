@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 // query_me for a profile page?
 export const QUERY_PRODUCTS = gql`
-Query products($username: String) {
-    products(username: $$username){
+query products($username: String) {
+    products(username: $username){
         _id
         name
         description
