@@ -5,16 +5,17 @@ import { Link } from "react-router-dom";
 // import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCT } from '../utils/queries';
+import { QUERY_PRODUCTS } from '../utils/queries';
 const SingleProduct = (props) => {
   const { id: productId } = useParams();
-  const { loading, data } = useQuery(QUERY_PRODUCT, {
+  const { loading, data } = useQuery(QUERY_PRODUCTS, {
     variables: { id: productId },
   });
   const product = data?.product || {};
   if (loading) {
     return <div>Loading...</div>;
   }
+  else{
   return (
     <div>
       <div className="card mb-3">
@@ -30,6 +31,6 @@ const SingleProduct = (props) => {
       </div>
       </div>
   );
-
+  }
 };
 export default ProductList;
