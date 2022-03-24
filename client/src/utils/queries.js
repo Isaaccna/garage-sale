@@ -9,6 +9,7 @@ query products($username: String) {
         image
         price
         username
+        createdAt
         commentCount
         comments {
             _id

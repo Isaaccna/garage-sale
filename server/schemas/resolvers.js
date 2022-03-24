@@ -19,9 +19,9 @@ const resolvers = {
       return Product.find(params).sort({ createdAt: -1 });
     },
     // place this inside of the `Query` nested object right after `products` 
-product: async (parent, { _id }) => {
-  return Product.findOne({ _id });
-},
+    product: async (parent, { _id }) => {
+      return Product.findOne({ _id });
+    },
     users: async () => {
       return User.find()
         .select('-__v -password')
@@ -32,13 +32,6 @@ product: async (parent, { _id }) => {
         .select('-__v -password')
         .populate('products');
     },
-    products: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Product.find(params).sort({ createdAt: -1 });
-    },
-    product: async (parent, { _id }) => {
-      return Product.findOne({ _id });
-    }
   },
 
   Mutation: {
