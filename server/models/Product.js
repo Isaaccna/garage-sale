@@ -36,13 +36,14 @@ const productSchema = new Schema(
   },
   {
     toJSON: {
-      getters: true
+      getters: true,
+      virtuals: true
     }
   }
 );
 
 productSchema.virtual('commentCount').get(function() {
-  return this.comment.length;
+  return this.comments.length;
 });
 
 const Product = model('Product', productSchema);

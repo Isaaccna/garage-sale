@@ -1,37 +1,46 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-// import CommentList from '../components/CommentList';
-// import CommentForm from '../components/CommentForm';
-import Auth from '../../utils/auth';
-import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCTS } from '../../utils/queries';
 
-const ProductList = (props) => {
-  const { id: productId } = useParams();
-  const { loading, data } = useQuery(QUERY_PRODUCTS, {
-    variables: { id: productId },
+const ProductList = ({ products }) => {
+
+  var formatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "numeric",
+    day: "2-digit"
   });
-  const product = data?.product || {};
-  if (loading) {
-    return <div>Loading...</div>;
+  console.log (formatter.format(new Date()));
+
+  if (!products.length) {
+    return <h2> Oh no!! The garage is empty!</h2>;
   }
-  else{
+
   return (
+ 
     <div>
-      <div className="card mb-3">
-        <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
-            {product.username}
-          </span>{' '}
-          Posted on {product.createdAt}
-        </p>
-        <div className="card-body">
-          <p>{product.description}</p>
-        </div>
-      </div>
-      </div>
+      <h2>Welcome to Garage Sale</h2>
+      {products && 
+      products.map(product => (
+        
+        <div key={product._id} className="card mb-3">
+          <h2 className="card-header">{product.name}
+          </h2>
+          <span>by {product.username} on {product.createdAt}</span>
+          
+          <div className="card-body">
+            {/* <link to={`/product/${product._id}`}> */}
+            <p>{product.description} <span>${product.price}</span></p> 
+             
+             <p className="card-footer mb-0">
+               Comments: {product.commentCount} || Click to {''} Make an Offer!!
+             </p>
+             {/* </link> */}
+             </div>
+             </div>
+        
+      ))}
+    </div>
+    
   );
-  }
-};
+      }
+
 export default ProductList;
