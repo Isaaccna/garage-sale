@@ -20,12 +20,12 @@ const ProductList = ({ products }) => {
       <h2>Welcome to Garage Sale</h2>
       {products && 
       products.map(product => (
-        <>
+        
         <div key={product._id} className="card mb-3">
           <h2 className="card-header">{product.name}
           </h2>
           <span>by {product.username} on {product.createdAt}</span>
-          </div>
+          
           <div className="card-body">
             {/* <link to={`/product/${product._id}`}> */}
             <p>{product.description} <span>${product.price}</span></p> 
@@ -35,7 +35,8 @@ const ProductList = ({ products }) => {
              </p>
              {/* </link> */}
              </div>
-        </>
+             </div>
+        
       ))}
     </div>
     

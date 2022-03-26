@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -53,7 +52,6 @@ const Profile = (props) => {
           />
         </div>
       </div>
-      <div className="mb-3">{!userParam && <ProductForm />}</div>
     </div>
   );
 };

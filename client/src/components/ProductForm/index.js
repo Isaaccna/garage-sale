@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
@@ -33,16 +32,18 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
 
  // update state based on form input changes
  const handleChange = (event) => {
-    const { name, value } = event.target;
-
+    const name = event.target.name;
+    const value = event.target.value
+    
     setProductState({
       ...productState,
-      [name]: value,
+      [name]: value
     });
   };
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    alert(setProductState);
 
     try {
       await addProduct({
@@ -74,6 +75,8 @@ return (
         <textarea
           placeholder="Describe your product"
           value={productState.description}
+          name="description"
+          id="description"
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
