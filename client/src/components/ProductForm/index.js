@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
+import ImageUploading from 'react-images-uploading';
 
 const ProductForm = () => {
 // use state for product name/ price / image/ or set use state for all 3 variables
-const [productState, setProductState] = useState({ name: '', description: '', price: '', image:'',});
+const [productState, setProductState] = useState({ name: '', description: '', price: '', image: ''});
+const maxNumber = 10;
+
 
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
@@ -40,6 +43,7 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
       [name]: value
     });
   };
+
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -89,6 +93,9 @@ return (
                 value={productState.price}
                 onChange={handleChange}
               />
+            
+                
+
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>
