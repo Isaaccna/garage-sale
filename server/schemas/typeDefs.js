@@ -12,12 +12,17 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    image: String
+    image: [Image]
     price: Float
     createdAt: String
     username: String
     commentCount: Int
     comments: [Comment] 
+  }
+  type Image {
+    _id: ID
+    name : String!
+    
   }
   type Comment {
     _id: ID
