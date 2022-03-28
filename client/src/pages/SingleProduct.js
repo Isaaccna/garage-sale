@@ -28,7 +28,7 @@ const SingleProduct = (props) => {
           <p>{product.description}</p>
         </div>
       </div>
-      </div>
+    </div>
   );
 
 };

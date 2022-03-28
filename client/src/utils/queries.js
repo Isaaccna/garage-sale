@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
-// query_me for a profile page?
+// add image later
 export const QUERY_PRODUCTS = gql`
 query products($username: String) {
     products(username: $username){
         _id
         name
         description
-        image
+        
         price
         username
         createdAt
@@ -26,7 +26,7 @@ query product($id: ID!) {
         _id
         name
         description
-        image
+        
         price
         username
         commentCount
@@ -39,7 +39,7 @@ query product($id: ID!) {
     }
 }
 `;
- 
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -50,7 +50,7 @@ export const QUERY_USER = gql`
         _id
         name
         description
-        image
+        
         price
         username
         commentCount
@@ -74,7 +74,7 @@ export const QUERY_ME = gql`
         _id
         name
         description
-        image
+        
         price
         username
         commentCount

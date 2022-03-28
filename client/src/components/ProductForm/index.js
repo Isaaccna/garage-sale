@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
-import ImageUploading from 'react-images-uploading';
+// in case we use the package below to upload images
+// import ImageUploading from 'react-images-uploading'; 
 
 const ProductForm = () => {
-// use state for product name/ price / image/ or set use state for all 3 variables
-const [productState, setProductState] = useState({ name: '', description: '', price: '', image: ''});
-const maxNumber = 10;
+// set use state for all variables (still waiting for images)
+const [productState, setProductState] = useState({ name: '', description: '', price: ''});
+
 
 
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
@@ -33,11 +34,11 @@ const maxNumber = 10;
     },
   });
 
- // update state based on form input changes
- const handleChange = (event) => {
+  // update state based on form input changes
+  const handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value
-    
+    const value = event.target.value;
+
     setProductState({
       ...productState,
       [name]: value
@@ -61,21 +62,21 @@ const maxNumber = 10;
     }
   };
 
-return (
+  return (
     <div>
       <form
         className="flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}
       >
-            <input
-                className='form-input'
-                placeholder='Product Name'
-                name='name'
-                type='name'
-                id='name'
-                value={productState.name}
-                onChange={handleChange}
-              />
+        <input
+          className='form-input'
+          placeholder='Product Name'
+          name='name'
+          type='name'
+          id='name'
+          value={productState.name}
+          onChange={handleChange}
+        />
         <textarea
           placeholder="Describe your product"
           value={productState.description}
@@ -85,17 +86,14 @@ return (
           onChange={handleChange}
         ></textarea>
         <input
-                className='form-input'
-                placeholder='Price '
-                name='price'
-                type='price'
-                id='price'
-                value={productState.price}
-                onChange={handleChange}
-              />
-            
-                
-
+          className='form-input'
+          placeholder='Price '
+          name='price'
+          type='price'
+          id='price'
+          value={productState.price}
+          onChange={handleChange}
+        />
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>

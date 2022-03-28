@@ -23,15 +23,15 @@ const Signup = () => {
     event.preventDefault();
 
     // use try/catch instead of promises to handle errors
-  try {
-    // execute addUser mutation and pass in variable data from form
-    const { data } = await addUser({
-      variables: { ...formState }
-    });
-    Auth.login(data.addUser.token);
-  } catch (e) {
-    console.error(e);
-  }
+    try {
+      // execute addUser mutation and pass in variable data from form
+      const { data } = await addUser({
+        variables: { ...formState }
+      });
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

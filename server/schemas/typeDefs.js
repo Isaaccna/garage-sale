@@ -12,18 +12,18 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    image: [Image]
+    # image: String
     price: Float
     createdAt: String
     username: String
     commentCount: Int
-    comments: [Comment] 
+    comments: [Comment]
   }
-  type Image {
-    _id: ID
-    name : String!
-    
-  }
+  # type Image {
+    # _id: ID
+    # name : String!
+    # 
+  # }
   type Comment {
     _id: ID
     commentBody: String
@@ -41,12 +41,13 @@ const typeDefs = gql`
     products( username: String): [Product]
     product(_id: ID!): Product
   }
+  # add image to addProduct mutation
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(name: String!, description: String!, image: String! price: Float!): Product
+    addProduct(name: String!, description: String!, price: Float!): Product
     addComment(productId: ID!, commentBody: String!): Product
-    
+
   }
 `;
 module.exports = typeDefs;
