@@ -4,8 +4,8 @@ import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
 
 const ProductForm = () => {
-// use state for product name/ price / image/ or set use state for all 3 variables
-const [productState, setProductState] = useState({ name: '', description: '', price: '', image:'',});
+  // use state for product name/ price / image/ or set use state for all 3 variables
+  const [productState, setProductState] = useState({ name: '', description: '', price: '', image: '', });
 
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
@@ -30,11 +30,11 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
     },
   });
 
- // update state based on form input changes
- const handleChange = (event) => {
+  // update state based on form input changes
+  const handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value
-    
+    const value = event.target.value;
+
     setProductState({
       ...productState,
       [name]: value
@@ -57,21 +57,21 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
     }
   };
 
-return (
+  return (
     <div>
       <form
         className="flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}
       >
-            <input
-                className='form-input'
-                placeholder='Product Name'
-                name='name'
-                type='name'
-                id='name'
-                value={productState.name}
-                onChange={handleChange}
-              />
+        <input
+          className='form-input'
+          placeholder='Product Name'
+          name='name'
+          type='name'
+          id='name'
+          value={productState.name}
+          onChange={handleChange}
+        />
         <textarea
           placeholder="Describe your product"
           value={productState.description}
@@ -81,14 +81,14 @@ return (
           onChange={handleChange}
         ></textarea>
         <input
-                className='form-input'
-                placeholder='Price '
-                name='price'
-                type='price'
-                id='price'
-                value={productState.price}
-                onChange={handleChange}
-              />
+          className='form-input'
+          placeholder='Price '
+          name='price'
+          type='price'
+          id='price'
+          value={productState.price}
+          onChange={handleChange}
+        />
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>
