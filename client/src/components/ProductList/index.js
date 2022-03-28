@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import "./productlist.css"
 
 const ProductList = ({ products }) => {
 
@@ -15,30 +16,44 @@ const ProductList = ({ products }) => {
   }
 
   return (
- 
-    <div>
-      <h2>Welcome to Garage Sale</h2>
-      {products && 
-      products.map(product => (
+    <main>
         
-        <div key={product._id} className="card mb-3">
-          <h2 className="card-header">{product.name}
-          </h2>
-          <span>by {product.username} on {product.createdAt}</span>
+        <div className='prod-wrap'>
+        <h2 className='welcome'>Welcome to Garage Sale</h2>
           
-          <div className="card-body">
-            {/* <link to={`/product/${product._id}`}> */}
-            <p>{product.description} <span>${product.price}</span></p> 
-             
-             <p className="card-footer mb-0">
-               Comments: {product.commentCount} || Click to {''} Make an Offer!!
-             </p>
-             {/* </link> */}
-             </div>
-             </div>
-        
-      ))}
-    </div>
+          {products && 
+          products.map(product => (
+            
+            <div key={product._id} className="prod-main">
+              
+              <div className="prod-name">
+              <h2> {product.name} </h2>
+              </div>
+              <div className='prod-img'>
+              <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+                AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+                  9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+              </div>
+                
+               
+
+              <div className='prod-create'>
+              <span>by {product.username} on {product.createdAt}</span>
+              </div>
+
+              <div className="prod-price">
+                {/* <link to={`/product/${product._id}`}> */}
+                <p> <span>${product.price}</span></p> 
+                
+                <p className="com-offer  ">
+                  Comments: {product.commentCount} || Click to {''} Make an Offer!!
+                </p>
+                {/* </link> */}
+                </div>
+                </div>
+             ))}
+            </div> 
+    </main>
     
   );
       }
