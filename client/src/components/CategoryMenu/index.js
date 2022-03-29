@@ -11,8 +11,8 @@ function CategoryMenu({ setCategory }) {
     //* center for categories
     <div style={{
       display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}>
       {categories.map((item) => (
         <button

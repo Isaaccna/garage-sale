@@ -17,7 +17,7 @@ const typeDefs = gql`
     createdAt: String
     username: String
     commentCount: Int
-    comments: [Comment] 
+    comments: [Comment]
   }
   type Comment {
     _id: ID
@@ -39,9 +39,9 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(username: String!, name: String!, description: String!, image: String! price: Int!, ): Product
+    addProduct(name: String!, description: String!, image: String! price: Float!): Product
     addComment(productId: ID!, commentBody: String!): Product
-    
+
   }
 `;
 module.exports = typeDefs;

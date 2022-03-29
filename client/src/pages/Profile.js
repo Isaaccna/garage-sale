@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -26,16 +25,16 @@ const Profile = (props) => {
     return <div>Loading...</div>;
   }
 
-//   if (!user?.username) {
-//     return (
-//       <h4>
-//         You need to be logged in to see this. Use the navigation links above to
-//         sign up or log in!
-//       </h4>
-//     );
-//   }
+  //   if (!user?.username) {
+  //     return (
+  //       <h4>
+  //         You need to be logged in to see this. Use the navigation links above to
+  //         sign up or log in!
+  //       </h4>
+  //     );
+  //   }
 
- 
+
 
   return (
     <div>
@@ -53,7 +52,6 @@ const Profile = (props) => {
           />
         </div>
       </div>
-      <div className="mb-3">{!userParam && <ProductForm />}</div>
     </div>
   );
 };
