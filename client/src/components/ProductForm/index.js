@@ -14,12 +14,12 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
       try {
-        // update thought array's cache
+        // update product array's cache
         // could potentially not exist yet, so wrap in a try/catch
         const { products } = cache.readQuery({ query: QUERY_PRODUCTS });
         cache.writeQuery({
           query: QUERY_PRODUCTS,
-          data: { PRODUCTS: [addProduct, ...products] },
+          data: { products: [addProduct, ...products] },
         });
       } catch (e) {
         console.error(e);
@@ -47,8 +47,8 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
 
   // submit form
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    alert(setProductState);
+    // event.preventDefault();
+    // alert(setProductState);
 
     try {
       await addProduct({
@@ -61,6 +61,7 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
       console.error(e);
     }
   };
+  
 
   return (
     <div>
@@ -89,7 +90,7 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
           className='form-input'
           placeholder='Price '
           name='price'
-          type='price'
+          type='number'
           id='price'
           value={productState.price}
           onChange={handleChange}
