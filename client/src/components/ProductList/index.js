@@ -27,13 +27,13 @@ const ProductList = ({ products }) => {
             <span>by {product.username} on {product.createdAt}</span>
 
             <div className="card-body">
-              {/* <link to={`/product/${product._id}`}> */}
+              <Link to={`/product/${product._id}`}>
               <p>{product.description} <span>${product.price}</span></p>
 
               <p className="card-footer mb-0">
                 Comments: {product.commentCount} || Click to {''} Make an Offer!!
               </p>
-              {/* </link> */}
+              </Link>
             </div>
           </div>
 

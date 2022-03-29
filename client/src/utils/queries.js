@@ -29,6 +29,7 @@ query product($id: ID!) {
         
         price
         username
+        createdAt
         commentCount
         comments {
             _id

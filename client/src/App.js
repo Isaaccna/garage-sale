@@ -49,8 +49,8 @@ function App() {
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/orderHistory" component={OrderHistory} />
-              <Route exact path="/Profile" component={Profile} />
-              <Route exact path="/products:id" component={SingleProduct} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/product/:id" component={SingleProduct} />
               <Route component={NoMatch} />
             </Switch>
           </div>
