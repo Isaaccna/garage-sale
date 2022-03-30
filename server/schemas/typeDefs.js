@@ -19,6 +19,11 @@ const typeDefs = gql`
     commentCount: Int
     comments: [Comment]
   }
+  # type Image {
+    # _id: ID
+    # name : String!
+    #
+  # }
   type Comment {
     _id: ID
     commentBody: String
@@ -36,6 +41,7 @@ const typeDefs = gql`
     products(username: String): [Product]
     product(_id: ID!): Product
   }
+  # add image to addProduct mutation
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth

@@ -32,7 +32,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ProductList products={products} />
+            <ProductList products={products} title = "Welcome to Garage Sale!" />
           )}
         </div>
       </div>
