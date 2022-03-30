@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import "./productlist.css"
+import "./productlist.css";
 
 const ProductList = ({ products, title }) => {
 
@@ -17,42 +17,40 @@ const ProductList = ({ products, title }) => {
 
   return (
     <main>
-        <h2 className='welcome'>Welcome to Garage Sale</h2>
-        <div className='prod-wrap'>
+      <h2 className='welcome'>Welcome to Garage Sale</h2>
+      <div className='prod-wrap'>
 
 
-          {products &&
+        {products &&
           products.map(product => (
 
             <div key={product._id} className="prod-main">
 
               <div className="prod-name">
-              <h2> {product.name} </h2>
+                <h2> {product.name} </h2>
               </div>
               <div className='prod-img'>
-              <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+                <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
                 AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                   9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
               </div>
 
-
-
               <div className='prod-create'>
-              <span>Posted by {product.username} on {product.createdAt}</span>
+                <span>Posted by {product.username} on {product.createdAt}</span>
               </div>
 
               <div className="prod-price">
-                {/* {<link to={`/SingleProduct/${product._id}`}> */}
-                <p> <span>${product.price}</span></p>
+                <Link to={`/product/${product._id}`}>
+                  <p> <span>${product.price}</span></p>
 
-                <p className="com-offer  ">
-                  Comments: {product.commentCount} || Click to {''} Make an Offer!!
-                </p>
-                {/* </link> */}
-                </div>
-                </div>
-             ))}
+                  <p className="com-offer  ">
+                    Comments: {product.commentCount} || Click to {''} Make an Offer!!
+                  </p>
+                </Link>
+              </div>
             </div>
+          ))}
+      </div>
     </main>
 
   );

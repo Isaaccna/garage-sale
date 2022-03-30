@@ -24,7 +24,7 @@ const SingleProduct = (props) => {
           <span style={{ fontWeight: 700 }} className="text-light">
             {product.name} - ${product.price}
           </span>{' '}
-          Posted by {product.username} on {product.createdAt}
+          <Link to={`/profile/${product.username}`} style={{ fontWeight: 700 }}>Posted by {product.username} on {product.createdAt}</Link>
         </p>
         <div className="card-body">
           <p>{product.description}</p>
@@ -33,11 +33,11 @@ const SingleProduct = (props) => {
 
       {product.commentCount > 0 && (
         <CommentList comments={product.comments} />
-      )}
+      )};
 
-      {Auth.loggedIn() && <CommentForm productId={product._id} />}
+      {Auth.loggedIn() && <CommentForm productId={product._id} />};
 
-    </div>
+    </div >
   );
 
 };
