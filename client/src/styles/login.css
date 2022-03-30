@@ -1,0 +1,32 @@
+.login-jumbo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50vh;
+    height: 25vh;
+    margin: 20px 10px;
+    border: 2px solid #232F3E;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.login-jumbo h4{
+   width: 100px;
+   color: aliceblue;
+   text-decoration: underline;
+   text-decoration-color: #F3A847;
+
+}
+.card-bg{
+    height: 7vh;
+    background-color: #232F3E;
+    border: solid;
+}
+
+.form-input{
+    width: 200%;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+

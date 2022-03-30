@@ -5,8 +5,7 @@ import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
 
 const ProductForm = () => {
   // use state for product name/ price / image/ or set use state for all 3 variables
-  const [productState, setProductState] = useState({ name: '', description: '', price: '', image: '', });
-
+  const [productState, setProductState] = useState('');
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
       try {
@@ -15,7 +14,7 @@ const ProductForm = () => {
         const { products } = cache.readQuery({ query: QUERY_PRODUCTS });
         cache.writeQuery({
           query: QUERY_PRODUCTS,
-          data: { PRODUCTS: [addProduct, ...products] },
+          data: { products: [addProduct, ...products] },
         });
       } catch (e) {
         console.error(e);
@@ -43,7 +42,7 @@ const ProductForm = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    alert(setProductState);
+    setProductState('');
 
     try {
       await addProduct({
