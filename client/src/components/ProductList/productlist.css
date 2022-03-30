@@ -1,30 +1,34 @@
 
+.welcome    {
+    margin: 10px 0px 0px 100px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+
+   
+}
 
 .prod-wrap{
-    width: 200%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
   
 }
 
-.welcome    {
-    margin-left: 10px;
-}
-
 .prod-img{
-    width: 30vh;
+    width: 75%;
     height: 30vh;
-    border: 15px solid green;
+    border: 1px solid green;
     padding: 50px;
-    margin: 10px 0px 10px 60px;
+    margin: 10px 0px 10px 40px;
+
 } 
 
 .prod-main{
-    margin: 0 20px 10px 50px;
+    margin: 10px 20px 10px 50px;
     box-shadow: 2px 2px 3px 3px #8888;
     overflow: hidden;
+    border-radius: 5px;
 }
 
 .prod-name{
@@ -38,26 +42,21 @@
 }
 
 .prod-create{
-    background-color: cyan;
-    height: 5vh;
+    margin: 5px;
+    font-size: small;
 }
 
 
 .prod-price{
-    background-color: darkmagenta;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 1px ;
+    
 }
 
-
-.yuhp{
-    background-color: #232F3E;
-    width: 100%;
-}
-
-.sup{
-    background-color: cornflowerblue;
-}
 
 .com-offer{
-    background-color: darkgoldenrod;
+    font-size: medium;
+    font-weight: 300;
 }
 

@@ -17,9 +17,9 @@ const ProductList = ({ products }) => {
 
   return (
     <main>
-        
-        <div className='prod-wrap'>
         <h2 className='welcome'>Welcome to Garage Sale</h2>
+        <div className='prod-wrap'>
+        
           
           {products && 
           products.map(product => (
@@ -38,11 +38,11 @@ const ProductList = ({ products }) => {
                
 
               <div className='prod-create'>
-              <span>by {product.username} on {product.createdAt}</span>
+              <span>Posted by {product.username} on {product.createdAt}</span>
               </div>
 
               <div className="prod-price">
-                {/* <link to={`/product/${product._id}`}> */}
+                {/* {<link to={`/SingleProduct/${product._id}`}> */}
                 <p> <span>${product.price}</span></p> 
                 
                 <p className="com-offer  ">
