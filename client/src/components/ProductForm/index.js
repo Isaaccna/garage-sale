@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
+// in case we use the package below to upload images
+// import ImageUploading from 'react-images-uploading';
 
 const ProductForm = () => {
   // use state for product name/ price / image/ or set use state for all 3 variables
@@ -9,7 +11,7 @@ const ProductForm = () => {
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
       try {
-        // update thought array's cache
+        // update product array's cache
         // could potentially not exist yet, so wrap in a try/catch
         const { products } = cache.readQuery({ query: QUERY_PRODUCTS });
         cache.writeQuery({
@@ -39,9 +41,9 @@ const ProductForm = () => {
       [name]: value
     });
   };
+
   // submit form
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
     setProductState('');
 
     try {
@@ -55,6 +57,7 @@ const ProductForm = () => {
       console.error(e);
     }
   };
+
 
   return (
     <div>
