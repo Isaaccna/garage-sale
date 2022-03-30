@@ -1,16 +1,16 @@
 const { User, Product } = require('../models');
-const { signToken } = require ('../utils/auth');
+const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-      const userData = await User.findOne({ _id: context.user._id })
-        .select('-__v -password')
-        .populate('products');
-  
-      return userData;
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('products');
+
+        return userData;
       }
       throw new AuthenticationError('Not logged in');
     },
@@ -18,14 +18,14 @@ const resolvers = {
       const params = username ? { username } : {};
       return Product.find(params).sort({ createdAt: -1 });
     },
-    // place this inside of the `Query` nested object right after `products` 
+    // place this inside of the `Query` nested object right after `products`
     product: async (parent, { _id }) => {
       return Product.findOne({ _id });
     },
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('products')
+        .populate('products');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
@@ -58,35 +58,35 @@ const resolvers = {
       return { token, user };
     },
     addProduct: async (parent, args, context) => {
-        if (context.user) {
-          const product = await Product.create({ ...args, username: context.user.username });
+      if (context.user) {
+        const product = await Product.create({ ...args, username: context.user.username });
 
-          await User.findByIdAndUpdate(
-            { _id: context.user._id },
-            { $push: { products: product._id } },
-            { new: true }
-          );
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { products: product._id } },
+          { new: true }
+        );
 
-          return product;
-        }
-        throw new AuthenticationError('You need to be logged in!');
-},
-
-addComment: async (parent, { productId, commentBody }, context) => {
-    if (context.user) {
-      const updatedProduct = await Product.findOneAndUpdate(
-        { _id: productId },
-        { $push: { comments: { commentBody, username: context.user.username } } },
-        { new: true, runValidators: true }
-      );
-
-      return updatedProduct;
-    }
-
-    throw new AuthenticationError('You need to be logged in!');
-  },
+        return product;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-}
+    addComment: async (parent, { productId, commentBody }, context) => {
+      if (context.user) {
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: productId },
+          { $push: { comments: { commentBody, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedProduct;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+  },
+
+};
 
 module.exports = resolvers;

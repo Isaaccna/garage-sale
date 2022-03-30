@@ -21,18 +21,14 @@ const productSchema = new Schema(
       type: String,
       required: true
     },
-
     image: {
       type: String
     },
     price: {
-      type: Number,
-      required: true,
-      min: 0.99
+      type: String,
+      required: true
     },
-   
-    comments : [CommentSchema]
-
+    comments: [CommentSchema]
   },
   {
     toJSON: {
@@ -42,7 +38,7 @@ const productSchema = new Schema(
   }
 );
 
-productSchema.virtual('commentCount').get(function() {
+productSchema.virtual('commentCount').get(function () {
   return this.comments.length;
 });
 

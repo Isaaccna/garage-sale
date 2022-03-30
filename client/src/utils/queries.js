@@ -39,7 +39,7 @@ query product($id: ID!) {
     }
 }
 `;
- 
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {

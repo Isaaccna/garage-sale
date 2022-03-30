@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-
 const CommentSchema = new Schema(
   {
     commentBody: {
@@ -18,7 +17,6 @@ const CommentSchema = new Schema(
       default: Date.now,
       get: timestamp => dateFormat(timestamp)
     },
-
   },
   {
     toJSON: {
@@ -27,9 +25,6 @@ const CommentSchema = new Schema(
   }
 );
 
-
-const Comment = model('Comment', CommentSchema)
-
-
+const Comment = model('Comment', CommentSchema);
 
 module.exports = CommentSchema;
