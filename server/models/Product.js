@@ -25,9 +25,8 @@ const productSchema = new Schema(
       type: String
     },
     price: {
-      type: Number,
-      required: true,
-      min: 0.99
+      type: String,
+      required: true
     },
     comments: [CommentSchema]
   },
