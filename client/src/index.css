@@ -36,7 +36,7 @@ h5,
 h6 {
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
-  margin: 5px 0;
+  margin: 0px 0;
   line-height: 1.25;
 }
 .card {
@@ -98,6 +98,8 @@ a {
 
 a:hover {
   text-decoration: underline;
+  text-decoration-color: #F3A847;
+  overflow: hidden;
 }
 
 header {
@@ -226,6 +228,8 @@ input:focus {
 
 @media screen and (max-width: 768px) {
   .card {
-    width: 100%;
+    width: 90%;
   }
 }
+
+

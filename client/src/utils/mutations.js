@@ -25,19 +25,34 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PRODUCT = gql`
-  mutation AddProduct($name: String!, $description: String!, $price: Float!, $image: String!) {
-  addProduct(name: $name, description: $description, price: $price, image: $image) {
-    _id
-    name
-    description
-    image
-    price
-    createdAt
-    username
-    commentCount
-    comments {
+  mutation AddProduct($name: String!, $description: String!, $price: String!, $image: String) {
+    addProduct(name: $name, description: $description, price: $price, image: $image) {
       _id
+      name
+      description
+      image
+      price
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+      }
     }
+  }
+`;
+
+export const ADD_COMMENT = gql`
+    mutation addComment($productId: ID!, $commentBody: String!) {
+    addComment(productId: $productId, commentBody: $commentBody) {
+      _id
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
     }
   }
 `;

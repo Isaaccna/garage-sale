@@ -1,6 +1,10 @@
-const { Schema, model } = require('mongoose');
+const {
+  Schema,
+  model
+} = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 const CommentSchema = require('./Comment');
+const imageSchema = require('./Image');
 
 const productSchema = new Schema(
   {
@@ -25,9 +29,8 @@ const productSchema = new Schema(
       type: String
     },
     price: {
-      type: Number,
-      required: true,
-      min: 0.99
+      type: String,
+      required: true
     },
     comments: [CommentSchema]
   },
@@ -36,8 +39,7 @@ const productSchema = new Schema(
       getters: true,
       virtuals: true
     }
-  }
-);
+  });
 
 productSchema.virtual('commentCount').get(function () {
   return this.comments.length;

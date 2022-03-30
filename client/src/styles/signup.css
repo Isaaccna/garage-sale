@@ -1,0 +1,23 @@
+.signup-jumbo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50vh;
+    height: 30vh;
+    margin: 20px 10px;
+    border: 2px solid #232F3E;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.signup-jumbo h4{
+    color: aliceblue;
+    text-decoration: underline;
+    text-decoration-color: #F3A847;
+
+}
+
+.card-bg{
+background-color: #232F3E;
+height: 6vh;
+}
