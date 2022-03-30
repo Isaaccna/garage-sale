@@ -44,7 +44,7 @@ const ProductForm = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    setProductState();
+    setProductState('');
 
     try {
       await addProduct({
