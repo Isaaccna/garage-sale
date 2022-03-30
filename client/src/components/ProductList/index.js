@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, title }) => {
 
   var formatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -17,7 +17,7 @@ const ProductList = ({ products }) => {
   return (
 
     <div>
-      <h2>Welcome to Garage Sale</h2>
+      <h2>{title}</h2>
       {products &&
         products.map(product => (
 

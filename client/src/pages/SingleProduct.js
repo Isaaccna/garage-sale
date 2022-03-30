@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import CommentList from '../components/CommentList';
-// import CommentForm from '../components/CommentForm';
+import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCT } from '../utils/queries';
@@ -33,7 +33,7 @@ const SingleProduct = (props) => {
          <CommentList comments={product.comments} />
      )}
 
-      {/* {Auth.loggedIn() && <CommentForm productId={product._id} />} */}
+      {Auth.loggedIn() && <CommentForm productId={product._id} />}
     
     </div>
   );
