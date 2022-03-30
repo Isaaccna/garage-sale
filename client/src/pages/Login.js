@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import "../styles/login.css"
+import "../styles/login.css";
 
 
 const Login = (props) => {
@@ -44,33 +44,33 @@ const Login = (props) => {
     <main>
       <div className='login-jumbo'>
         <div className='card-bg'>
-            <h4 className='mx-1'>Login</h4>
-            <div className='login-form'>
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className='form-input'
-                  placeholder='Email Address'
-                  name='email'
-                  type='email'
-                  id='email'
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className='form-input my-1'
-                  placeholder='******'
-                  name='password'
-                  type='password'
-                  id='password'
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button className='mx-2 btn d-block w-100' type='submit'>
-                  Submit
-                </button>
-              </form>
-              {error && <div>Login failed</div>}
-            </div>
+          <h4 className='mx-1'>Login</h4>
+          <div className='login-form'>
+            <form onSubmit={handleFormSubmit}>
+              <input
+                className='form-input'
+                placeholder='Email Address'
+                name='email'
+                type='email'
+                id='email'
+                value={formState.email}
+                onChange={handleChange}
+              />
+              <input
+                className='form-input my-1'
+                placeholder='******'
+                name='password'
+                type='password'
+                id='password'
+                value={formState.password}
+                onChange={handleChange}
+              />
+              <button className='mx-2 btn d-block w-100' type='submit'>
+                Submit
+              </button>
+            </form>
+            {error && <div>Login failed</div>}
+          </div>
         </div>
       </div>
     </main>

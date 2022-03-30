@@ -6,8 +6,6 @@ import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
 const ProductForm = () => {
   // use state for product name/ price / image/ or set use state for all 3 variables
   const [productState, setProductState] = useState('');
-  // const [productState, setProductState] = useState({ name: '', description: '', price: '', image: '' });
-
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
       try {
