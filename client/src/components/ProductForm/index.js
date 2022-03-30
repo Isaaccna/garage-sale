@@ -3,14 +3,11 @@ import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import { QUERY_PRODUCTS, QUERY_ME } from '../../utils/queries';
 // in case we use the package below to upload images
-// import ImageUploading from 'react-images-uploading'; 
+// import ImageUploading from 'react-images-uploading';
 
 const ProductForm = () => {
-// set use state for all variables (still waiting for images)
-const [productState, setProductState] = useState({ name: '', description: '', price: ''});
-
-
-
+  // use state for product name/ price / image/ or set use state for all 3 variables
+  const [productState, setProductState] = useState('');
   const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
     update(cache, { data: { addProduct } }) {
       try {
@@ -47,8 +44,8 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
 
   // submit form
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
-    // alert(setProductState);
+    event.preventDefault();
+    setProductState('');
 
     try {
       await addProduct({
@@ -61,7 +58,7 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
       console.error(e);
     }
   };
-  
+
 
   return (
     <div>
@@ -90,7 +87,7 @@ const [productState, setProductState] = useState({ name: '', description: '', pr
           className='form-input'
           placeholder='Price '
           name='price'
-          type='number'
+          type='price'
           id='price'
           value={productState.price}
           onChange={handleChange}

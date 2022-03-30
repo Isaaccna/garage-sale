@@ -6,6 +6,8 @@ import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCT } from '../utils/queries';
+
+
 const SingleProduct = (props) => {
   const { id: productId } = useParams();
   const { loading, data } = useQuery(QUERY_PRODUCT, {
@@ -30,11 +32,11 @@ const SingleProduct = (props) => {
       </div>
 
       {product.commentCount > 0 && (
-         <CommentList comments={product.comments} />
-     )}
+        <CommentList comments={product.comments} />
+      )}
 
       {Auth.loggedIn() && <CommentForm productId={product._id} />}
-    
+
     </div>
   );
 

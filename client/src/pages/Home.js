@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import ProductForm from "../components/ProductForm";
 import ProductList from "../components/ProductList";
 import Auth from '../utils/auth';
+import "../styles/home.css"
 
 const Home = () => {
-  const { username: userParam } = useParams();
 
   const loggedIn = Auth.loggedIn();
   // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive
@@ -15,7 +15,6 @@ const Home = () => {
   console.log(userData);
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-
   const products = data?.products || [];
   console.log(products);
 

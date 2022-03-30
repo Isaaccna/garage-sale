@@ -1,6 +1,7 @@
 {
   "short_name": "Garage Sale",
   "name": "Garage Sale",
+  "description": "Buy and sell your items online with a virtual garage sale!",
   "icons": [
     {
       "src": "favicon.ico",

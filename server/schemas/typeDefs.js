@@ -12,7 +12,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    # image: String
+    image: String
     price: String
     createdAt: String
     username: String
@@ -22,7 +22,7 @@ const typeDefs = gql`
   # type Image {
     # _id: ID
     # name : String!
-    # 
+    #
   # }
   type Comment {
     _id: ID
@@ -32,22 +32,21 @@ const typeDefs = gql`
   }
   type Auth {
     token: ID!
-    user: User
+      user: User
   }
   type Query {
     me: User
     users: [User]
     user(username: String!): User
-    products( username: String): [Product]
+    products(username: String): [Product]
     product(_id: ID!): Product
   }
   # add image to addProduct mutation
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(name: String!, description: String!, price: String!): Product
+    addProduct(name: String!, description: String!, price: String!, image: String): Product
     addComment(productId: ID!, commentBody: String!): Product
-
   }
 `;
 module.exports = typeDefs;
