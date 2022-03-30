@@ -9,7 +9,7 @@ const ProductList = ({ products }) => {
     month: "numeric",
     day: "2-digit"
   });
-  console.log (formatter.format(new Date()));
+  console.log(formatter.format(new Date()));
 
   if (!products.length) {
     return <h2> Oh no!! The garage is empty!</h2>;
@@ -56,6 +56,6 @@ const ProductList = ({ products }) => {
     </main>
     
   );
-      }
+};
 
 export default ProductList;
